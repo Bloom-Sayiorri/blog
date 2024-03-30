@@ -1,13 +1,15 @@
 import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1 className="m-2 p-4 bg-blue-500 text-white ">Bloom Sayiorri</h1>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
+  ) 
 }
 
 export default App;
