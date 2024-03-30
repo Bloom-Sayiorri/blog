@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -9,7 +9,7 @@ import Blogs from './pages/Blogs';
 
 function App() {
   return (
-    <BrowserRouter>
+    <div className='h-screen overflow-hidden'>
     <Navbar/>
       <Routes>
         <Route exact path="/" element={<Home />} />
@@ -18,7 +18,7 @@ function App() {
         <Route exact path="/profile" element={<Profile/>} />
       </Routes>
       <Footer/>
-    </BrowserRouter>
+    </div>
   ) 
 }
 
