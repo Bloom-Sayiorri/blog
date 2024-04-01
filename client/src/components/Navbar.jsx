@@ -61,7 +61,7 @@ const Navbar = ({ isActive, isPending, isTransitioning, isDark, handleDark }) =>
         </NavLink>
       </nav>
       <button type='button' onClick={handleDark}>
-        {isDark ? <LuSunDim /> : <FaMoon/>}
+        {isDark ? <LuSunDim className={`text-2xl ${isDark ? 'text-white' : 'text-black'}`}/> : <FaMoon className={`${isDark ? '' : 'text-zinc-700'}`}/>}
       </button>
     </div>
   )
