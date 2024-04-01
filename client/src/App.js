@@ -21,7 +21,7 @@ function App() {
   }
   return (
     <BrowserRouter>
-      <div className='h-screen overflow-hidden `isDark ? bg-gray-700 : bg-white`'>
+      <div className={`h-screen overflow-hidden ${isDark ? 'bg-gray-700' : 'bg-white'}`}>
       <Navbar
         isActive={isActive}
         isPending={isPending}

@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/logo.png';
-import { FaMoon, LuSunDim } from "react-icons/fa";
+import { FaMoon } from "react-icons/fa";
+import { LuSunDim } from "react-icons/lu";
 
 const Navbar = ({ isActive, isPending, isTransitioning, isDark, handleDark }) => {
 
@@ -60,7 +61,7 @@ const Navbar = ({ isActive, isPending, isTransitioning, isDark, handleDark }) =>
         </NavLink>
       </nav>
       <button type='button' onClick={handleDark}>
-        {isDark ? <FaMoon /> : <LuSunDim />}
+        {isDark ? <LuSunDim /> : <FaMoon/>}
       </button>
     </div>
   )
