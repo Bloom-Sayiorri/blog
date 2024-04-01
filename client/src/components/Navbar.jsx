@@ -1,8 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/logo.png';
+import { FaMoon, LuSunDim } from "react-icons/fa";
 
-const Navbar = ({ isActive, isPending, isTransitioning }) => {
+const Navbar = ({ isActive, isPending, isTransitioning, isDark, handleDark }) => {
+
+
+
   return (
     <div className='flex justify-between'>
       <div className='flex justify-center align-center text-center'>
@@ -55,6 +59,9 @@ const Navbar = ({ isActive, isPending, isTransitioning }) => {
           About
         </NavLink>
       </nav>
+      <button type='button' onClick={handleDark}>
+        {isDark ? <FaMoon /> : <LuSunDim />}
+      </button>
     </div>
   )
 }

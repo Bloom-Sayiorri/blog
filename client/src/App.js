@@ -12,13 +12,22 @@ function App() {
   const [isActive, setIsActive] = useState(false);
   const [isPending, setIsPending] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
+
+  // THEMES
+  const [isDark, setIsDark] = useState(false);
+
+  const handleDark = () => {
+    setIsDark(!isDark);
+  }
   return (
     <BrowserRouter>
-      <div className='h-screen overflow-hidden'>
+      <div className='h-screen overflow-hidden `isDark ? bg-gray-700 : bg-white`'>
       <Navbar
         isActive={isActive}
         isPending={isPending}
         isTransitioning={isTransitioning}
+        isDark={isDark}
+        handleDark={handleDark}
       />
         <Routes>
           <Route
