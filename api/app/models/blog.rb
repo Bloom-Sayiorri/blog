@@ -1,4 +1,5 @@
 class Blog < ApplicationRecord
-  belongs_to :user_id
-  belongs_to :category_id
+  belongs_to :comment
+  belongs_to :user
+  belongs_to :category
 end

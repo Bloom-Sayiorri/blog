@@ -5,13 +5,15 @@ one:
   genre: MyString
   content: MyString
   rating: 1
-  user_id: one
-  category_id: one
+  comment: one
+  user: one
+  category: one
 
 two:
   title: MyString
   genre: MyString
   content: MyString
   rating: 1
-  user_id: two
-  category_id: two
+  comment: two
+  user: two
+  category: two

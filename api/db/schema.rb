@@ -10,22 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_02_144910) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_02_154941) do
   create_table "blogs", force: :cascade do |t|
     t.string "title"
     t.string "genre"
     t.string "content"
     t.integer "rating"
-    t.integer "user_id_id", null: false
-    t.integer "category_id_id", null: false
+    t.integer "comment_id", null: false
+    t.integer "user_id", null: false
+    t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id_id"], name: "index_blogs_on_category_id_id"
-    t.index ["user_id_id"], name: "index_blogs_on_user_id_id"
+    t.index ["category_id"], name: "index_blogs_on_category_id"
+    t.index ["comment_id"], name: "index_blogs_on_comment_id"
+    t.index ["user_id"], name: "index_blogs_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
     t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -38,6 +46,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_02_144910) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "blogs", "category_ids"
-  add_foreign_key "blogs", "user_ids"
+  add_foreign_key "blogs", "categories"
+  add_foreign_key "blogs", "comments"
+  add_foreign_key "blogs", "users"
 end
