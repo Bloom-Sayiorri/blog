@@ -6,10 +6,8 @@ import { LuSunDim } from "react-icons/lu";
 
 const Navbar = ({ isActive, isPending, isTransitioning, isDark, handleDark }) => {
 
-
-
   return (
-    <div className='flex justify-between'>
+    <header className='flex justify-between'>
       <div className='flex justify-center align-center text-center'>
         <img className='h-20 w-20 text-center' src={logo} alt="logo"/>
         <h1 className='font-black bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500/40 text-transparent bg-clip-text text-4xl'>Blog App</h1>
@@ -63,7 +61,7 @@ const Navbar = ({ isActive, isPending, isTransitioning, isDark, handleDark }) =>
       <button type='button' onClick={handleDark}>
         {isDark ? <LuSunDim className={`text-2xl ${isDark ? 'text-white' : 'text-black'}`}/> : <FaMoon className={`${isDark ? '' : 'text-zinc-700'}`}/>}
       </button>
-    </div>
+    </header>
   )
 }
 
