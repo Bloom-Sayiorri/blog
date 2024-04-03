@@ -15,7 +15,7 @@ const Login = () => {
 
   return (
     <div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className=''>
             <h2 className='text-4xl'>Login</h2>
             <label htmlFor='username'>Username</label>
             <input
@@ -44,6 +44,7 @@ const Login = () => {
                 onChange={handleChange}
                 className='rounded-lg border-none py-2 px-4 max-w-80 w-48'
             />
+            <input type='button' value='Sign Up' className='rounded-lg py-3 px-6 bg-blue-500 text-white'/>
         </form>
     </div>
   )
