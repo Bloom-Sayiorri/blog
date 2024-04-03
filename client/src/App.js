@@ -21,14 +21,14 @@ function App() {
   }
   return (
     <BrowserRouter>
-      <div className={`h-screen overflow-hidden ${isDark ? 'bg-gray-700' : 'bg-white'}`}>
-      <Navbar
-        isActive={isActive}
-        isPending={isPending}
-        isTransitioning={isTransitioning}
-        isDark={isDark}
-        handleDark={handleDark}
-      />
+      <div className={`h-screen overflow-hidden ${isDark ? 'bg-gray-700 text-white' : 'bg-white'}`}>
+        <Navbar
+          isActive={isActive}
+          isPending={isPending}
+          isTransitioning={isTransitioning}
+          isDark={isDark}
+          handleDark={handleDark}
+        />
         <Routes>
           <Route
             exact path="/"
