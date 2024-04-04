@@ -4,10 +4,10 @@ import logo from '../assets/logo.png';
 import { FaMoon } from "react-icons/fa";
 import { LuSunDim } from "react-icons/lu";
 
-const Navbar = ({ isActive, isPending, isTransitioning, isDark, handleDark }) => {
+const Navbar = ({ isDark, handleDark }) => {
 
   return (
-    <header className='flex justify-between sticky '>
+    <header className='flex justify-between sticky'>
       <div className='flex justify-center align-center text-center'>
         <img className='h-20 w-20 text-center' src={logo} alt="logo"/>
         <h1 className='font-black bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500/40 text-transparent bg-clip-text text-4xl'>Blog App</h1>
