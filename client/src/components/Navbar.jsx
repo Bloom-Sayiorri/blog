@@ -30,6 +30,7 @@ const Navbar = ({ isDark, handleDark }) => {
         <NavLink to='/blogs' className=''>Blogs</NavLink>
         <NavLink to='/profile' className=''>Profile</NavLink>
         <NavLink to='/about' className=''>About</NavLink>
+        <NavLink to='/signup' className=''>Signup</NavLink>
       </nav>
       <button type='button' onClick={handleDark}>
         {isDark ? <LuSunDim className={`text-2xl ${isDark ? 'text-white' : 'text-black'}`}/> : <FaMoon className={`${isDark ? '' : 'text-zinc-700'}`}/>}

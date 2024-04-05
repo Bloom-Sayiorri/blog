@@ -1,25 +1,45 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Signup = () => {
+
+    const [ formData, setFormData ] = useState({
+        username: '',
+        email: '',
+        password: ''
+    })
 
     const handleSubmit = (e) => {
         e.preventDefault();
     }
 
     const handleChange = (e) => {
-        e.target.value();
+        const { name, value } = e.target
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+        console.log(formData)
     }
 
   return (
-    <div>
-        <form onSubmit={handleSubmit} className=''>
+    <div className=''>
+        <form onSubmit={handleSubmit} className='flex flex-col justify-center items-center'>
             <h2 className='text-4xl'>Login</h2>
+            <label htmlFor='username'>Username</label>
+            <input
+                type='text'
+                name='username'
+                id ='username'
+                value={formData.username}
+                onChange={handleChange}
+                className='rounded-lg border-none py-2 px-4 max-w-80 w-48'
+            />
             <label htmlFor='email'>Email</label>
             <input
                 type='email'
                 name='email'
                 id = 'email'
-                placeholder='Email'
+                value={formData.email}
                 onChange={handleChange}
                 className='rounded-lg border-none py-2 px-4 max-w-80 w-48'
             />
@@ -28,7 +48,7 @@ const Signup = () => {
                 type='password'
                 name='password'
                 id ='password'
-                placeholder='Enter your Password'
+                value={formData.password}
                 onChange={handleChange}
                 className='rounded-lg border-none py-2 px-4 max-w-80 w-48'
             />

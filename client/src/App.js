@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import About from './pages/About';
 import Profile from './pages/Profile';
 import Blogs from './pages/Blogs';
+import Signup from './pages/Signup';
 
 function App() {
   const [isActive, setIsActive] = useState(false);
@@ -39,27 +40,27 @@ function App() {
             setIsTransitioning={setIsTransitioning}
           />
           <Route
-            exact path="/blogs"
+            path="/blogs"
             element={<Blogs />} 
             setIsActive={setIsActive}
             setIsPending={setIsPending}
             setIsTransitioning={setIsTransitioning}
           />
           <Route
-            exact path="/profile"
+            path="/profile"
             element={<Profile />} 
             setIsActive={setIsActive}
             setIsPending={setIsPending}
             setIsTransitioning={setIsTransitioning}
           />
           <Route
-            exact path="/about"
+            path="/about"
             element={<About />} 
             setIsActive={setIsActive}
             setIsPending={setIsPending}
             setIsTransitioning={setIsTransitioning}
           />
-          
+          <Route path='/signup' element={<Signup />} />
         </Routes>
         <Footer/>
       </div>

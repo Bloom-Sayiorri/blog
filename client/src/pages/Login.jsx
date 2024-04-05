@@ -17,15 +17,6 @@ const Login = () => {
     <div>
         <form onSubmit={handleSubmit} className=''>
             <h2 className='text-4xl'>Login</h2>
-            <label htmlFor='username'>Username</label>
-            <input
-                type='text'
-                name='username'
-                id ='username'
-                placeholder='Username'
-                onChange={handleChange}
-                className='rounded-lg border-none py-2 px-4 max-w-80 w-48'
-            />
             <label htmlFor='email'>Email</label>
             <input
                 type='email'
@@ -35,7 +26,7 @@ const Login = () => {
                 onChange={handleChange}
                 className='rounded-lg border-none py-2 px-4 max-w-80 w-48'
             />
-            <label htmlFor='password'>Username</label>
+            <label htmlFor='password'>Password</label>
             <input
                 type='password'
                 name='password'
