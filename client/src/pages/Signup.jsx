@@ -10,6 +10,9 @@ const Signup = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        fetch('http.example.api')
+        .then(r => r.json)
+        .then(data => setFormData(data))
     }
 
     const handleChange = (e) => {
