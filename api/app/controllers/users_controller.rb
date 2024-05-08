@@ -19,3 +19,6 @@ class UsersController < ApplicationController
     User.find_by(id: params[:id])
   end
 end
+
+# REST ROUTES
+# :index, :new, :create, :show, :update, :destory and :edit
