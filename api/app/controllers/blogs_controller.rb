@@ -1,18 +1,14 @@
 class BlogsController < ApplicationController
-
+  rescue_from ActiveRecord::RecordNotFount with: :render_not_found_response
   def show
     @blog = find_blog
     render json: @blog
-  rescue ActiveRecord::RecordNotFound
-    render_not_found_response
   end
 
   def destroy
     @blog = find_blog
     @blog.destroy
     head :no_content
-  rescue ActiveRecord::RecordNotFound
-    render_not_found_response
   end
 
   private
