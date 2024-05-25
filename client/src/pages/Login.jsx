@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 
 const Login = () => {
 
-    const [formData, setFormData] = useState('');
+    const [formData, setFormData] = useState({
+        email: '',
+        password: '',
+    });
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -14,7 +17,7 @@ const Login = () => {
     }
 
   return (
-    <div>
+    <div className=''>
         <form onSubmit={handleSubmit} className=''>
             <h2 className='text-4xl'>Login</h2>
             <label htmlFor='email'>Email</label>

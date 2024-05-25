@@ -27,7 +27,7 @@ const Signup = () => {
   return (
     <div className=''>
         <form onSubmit={handleSubmit} className='flex flex-col justify-center items-center'>
-            <h2 className='text-4xl'>Login</h2>
+            <h2 className='text-4xl'>Sign Up</h2>
             <label htmlFor='username'>Username</label>
             <input
                 type='text'
