@@ -9,7 +9,7 @@ const About = () => {
       <div className='h-full flex justify-between items-center'>
         <img className='h-40 w-40' src={about} alt="About_Image" />
 
-        <div className='h-3/5 bg-bg w-4'></div>
+        <div className='h-full max-h-80 bg-bg w-4'></div>
 
         <div className=''>
           <div className=''>
