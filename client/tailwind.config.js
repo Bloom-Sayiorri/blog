@@ -21,7 +21,7 @@ module.exports = {
       boxSizing: 'border-box',
     },
     fontFamily: {
-      sans: ['Poppins', 'sans-serif'],
+      poppins: ['Poppins', 'sans-serif'],
     },
     extend: {
     },
