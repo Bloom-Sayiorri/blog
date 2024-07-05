@@ -10,6 +10,6 @@
     }
 
     body {
-        @apply text-primaryColor font-poppins tracking-wider overflow-x-hidden;
+        @apply font-poppins tracking-wider overflow-x-hidden;
     }
 }

@@ -28,4 +28,3 @@ const Navbar = ({ isDark, handleDark }) => {
 }
 
 export default Navbar
-
