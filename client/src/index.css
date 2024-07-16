@@ -6,10 +6,10 @@
 
 @layer base {
     html {
-        @apply scroll-smooth;
+        height: 100vh;
     }
 
     body {
-        @apply font-poppins tracking-wider overflow-x-hidden;
+        font-family: 'Poppins', sans-serif;
     }
 }
