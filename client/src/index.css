@@ -13,3 +13,9 @@
         font-family: 'Poppins', sans-serif;
     }
 }
+
+@layer utilities {
+    .active {
+        @apply text-red-600
+   }
+}
