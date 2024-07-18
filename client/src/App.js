@@ -19,7 +19,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className={`h-screen overflow-hidden ${isDark ? 'bg-gray-700' : 'bg-white'}`}>
+      <div className={`h-screen overflow-hidden ${isDark ? 'bg-bg text-white' : 'bg-white'}`}>
       <Navbar isDark={isDark} handleDark={handleDark} />
         <Routes>
           <Route exact path="/" element={<Home />}/>
