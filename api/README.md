@@ -22,3 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+## CREATE A USER PROFILE RESOURCE
+A user has one profile hence we use a one-to-one relationship
+Profile Data attr: username, email, password-change, bio, img-url, favorites, (optional: socials)
+User Data Attr: username, email, password

@@ -13,3 +13,5 @@ Blog has_many: :comments
 Category has_many :blogs
 
 The Entity Relationship Diagram link  [text](https://dbdiagram.io/d/Blog-App-664f977ff84ecd1d22fef225)
+
+-We may need a pageviews_remaining attribute for the blogs and prompt the user to pay after view a certain number of pages.
