@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: %i[ show update destroy ]
+  before_action :find_blog, only: %i[ show update destroy ]
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
   # GET /blogs
