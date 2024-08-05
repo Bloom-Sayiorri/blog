@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authorized, only: %i[ show update ]
   before_action :find_user, only: %i[ show update destroy ]
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
@@ -46,6 +47,10 @@ class UsersController < ApplicationController
   # rescue ActionController::ParameterMissing
   #   params.permit(:title, :instructions, :minutes_to_complete)
   # end
+
+  def render_not_found
+    render json: { errors: [message: "User not found!"] }, status: :not_found
+  end
 
   def render_unprocessable_entity(e)
     render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
