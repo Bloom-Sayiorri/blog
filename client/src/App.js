@@ -15,7 +15,9 @@ function App() {
 
   const handleDark = () => {
     setIsDark(!isDark);
-  }
+  };
+  
+  // use useEffect to autologin the user and setUser(user) by fetching /me route
 
   return (
     <BrowserRouter>
