@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
-  # before_action :set_blog, only: %i[ show update destroy ]
+  before_action :set_blog, only: %i[ show update destroy ]
+  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
   # GET /blogs
   def index
@@ -9,7 +10,6 @@ class BlogsController < ApplicationController
 
   # GET /blogs/1
   def show
-    @blog = find_blog
     render json: @blog, status: :ok
   end
 
@@ -19,13 +19,12 @@ class BlogsController < ApplicationController
     if @blog.valid?
       render json: @blog, status: :created
     else
-      render json: @blog.errors, status: :unprocessable_entity
+      render json: @blog.errors.full_messages, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /blogs/1
   def update
-    @blog = find_blog
     if @blog.update(blog_params)
       render json: @blog, status: :created
     else
@@ -36,16 +35,21 @@ class BlogsController < ApplicationController
   # DELETE /blogs/1
   def destroy
     @blog.destroy!
+    head :no_content
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def find_blog
-      Blog.find(params[:id])
+      @blog = Blog.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def blog_params
       params.require(:blog).permit(:title, :image_url, :rating, :category, :content, :user_id, :category_id)
+    end
+
+    def render_not_found
+      render json: { errors: ["Blog not found"] }, status: :not_found
     end
 end
