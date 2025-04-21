@@ -10,13 +10,13 @@ const Navbar = ({ isDark, handleDark }) => {
     <header className='flex justify-between items-center py-2 px-4'>
       <div className=''>
         {/* <img src={logo} alt='Logo' height={40} width={40} className='bg-transparent' /> */}
-        <NavLink className=''>
-          <h1 className='font-semibold bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500/40 text-transparent bg-clip-text text-4xl'>Blog App</h1>
+        <NavLink to="/" className=''>
+          <h1 className='font-semibold bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500/40 text-transparent bg-clip-text text-xl z-3'>Blogz</h1>
         </NavLink>
       </div>
 
       <nav className='flex items-center gap-5'>
-        <NavLink to='/home' className=''>Home</NavLink>
+        <NavLink to='/' className='' activeClassName="active">Home</NavLink>
         <NavLink to='/blogs' className=''>Blogs</NavLink>
         <NavLink to='/profile' className=''>Profile</NavLink>
         <NavLink to='/about' className=''>About</NavLink>

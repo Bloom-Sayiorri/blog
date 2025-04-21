@@ -4,8 +4,10 @@ const Dashboard = () => {
   return (
     <div>Dashboard
     {
-    /* analytics & settings
-                password & profile   
+    /* 
+      analytics & settings
+      password & profile
+      email configuration 
     */}
     </div>
   )

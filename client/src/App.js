@@ -24,7 +24,7 @@ function App() {
       <div className={`h-screen overflow-hidden ${isDark ? 'bg-bg text-white' : 'bg-white'}`}>
       <Navbar isDark={isDark} handleDark={handleDark} />
         <Routes>
-          <Route exact path="/" element={<Home />}/>
+          <Route path="/" element={<Home />}/>
           <Route path="/blogs" element={<Blogs />}/>
           <Route path="/profile" element={<Profile />}/>
           <Route path="/about"   element={<About />}/>

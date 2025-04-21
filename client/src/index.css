@@ -14,8 +14,8 @@
     }
 }
 
-@layer utilities {
+@layer components {
     .active {
-        @apply text-red-600
+        @apply text-red-600;
    }
 }
