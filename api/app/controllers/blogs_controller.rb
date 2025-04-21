@@ -1,6 +1,8 @@
 class BlogsController < ApplicationController
   before_action :find_blog, only: %i[ show update destroy ]
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
+  rescue_from ActiveRecord::RecordNotDestroyed, with: :render_not_destroyed
+  # resue_from ActiveRecord::InvalidRecord, with: :render_invalid
 
   # GET /blogs
   def index
@@ -15,7 +17,7 @@ class BlogsController < ApplicationController
 
   # POST /blogs
   def create
-    @blog = Blog.create(blog_params)
+    @blog = Blog.create!(blog_params)
     if @blog.valid?
       render json: @blog, status: :created
     else
@@ -25,7 +27,7 @@ class BlogsController < ApplicationController
 
   # PATCH/PUT /blogs/1
   def update
-    if @blog.update(blog_params)
+    if @blog.update!(blog_params)
       render json: @blog, status: :created
     else
       render json: @blog.errors.full_messages, status: :unprocessable_entity
@@ -49,7 +51,15 @@ class BlogsController < ApplicationController
       params.require(:blog).permit(:title, :image_url, :rating, :category, :content, :user_id, :category_id)
     end
 
+    # def render_invalid
+
+    # end
+
     def render_not_found
       render json: { errors: ["Blog not found"] }, status: :not_found
+    end
+
+    def render_not_destroyed
+      render json: { errors: ["Blog not deleted"] }, status: :unprocessable_entity
     end
 end
