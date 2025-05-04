@@ -1,33 +1,42 @@
 class UsersController < ApplicationController
-  before_action :authorized, only: %i[ show update ]
-  before_action :find_user, only: %i[ show update destroy ]
+  skip_before_action :authorize, only: %i[ create ]
+  # before_action :authorize, only: %i[ show update ]
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
   rescue_from ActiveRecord::RecordNotDestroyed, with: :render_not_destroyed
 
   def index
-    @users = User.all
-    render json: @users, status: :ok
+    users = User.all
+    render json: users, status: :ok
   end
 
   def show
-    render json: @user, status: :ok
+    user = find_user
+    if user
+      render json: user, status: :ok
+    else
+      render json: { errors: { message: ['Not authorized'] } }, status: :not_authorized
+    end
   end
 
   def create
-    @user = User.create!(user_params)
-    session[:user_id] = user.id
-    render json: @user, status: :created
+    user = User.create!(user_params)
+    if user.valid?
+      render json: user, status: :created
+    else
+      render json: {  errors: user.errord.full_messages }, status: :unprocessable_entity
+    end
   end
 
   def update
-    @user.update!(user_params)
-    render json: :created, status: :created
+    user = find_user
+    user.update!(user_params)
+    render json: user, status: :created
   end
 
   def destroy
-    if @user
-      @user.destroy!
+    if user
+      user.destroy!
       head :no_content
     end
   end
@@ -35,18 +44,12 @@ class UsersController < ApplicationController
   private
 
   def find_user
-    @user = User.find_by(id: session[:user_id])
+    User.find_by(id: session[:user_id])
   end
 
   def user_params
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(:username, :email, :password) #password confirmation
   end
-
-  # def recipe_params
-  #   params.require(:recipe).permit(:title, :instructions, :minutes_to_complete)
-  # rescue ActionController::ParameterMissing
-  #   params.permit(:title, :instructions, :minutes_to_complete)
-  # end
 
   def render_not_found
     render json: { errors: [message: "User not found!"] }, status: :not_found

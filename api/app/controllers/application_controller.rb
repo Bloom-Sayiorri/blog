@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::API
   include ActionController::Cookies
+  before_action :authorize
 
-  def authorized
+  def authorize
     return render json: { errors: ["You are not logged in!"] }, status: :unauthorized unless logged_in?
   end
 

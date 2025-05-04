@@ -2,9 +2,9 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :reviews
-  haas_many :blogs
+  has_many :blogs
 
-  vakidates :username, presence: true, length: { minimum: 3 }
+  validates :username, presence: true, length: { minimum: 3 }
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, uniqueness: true
 end
