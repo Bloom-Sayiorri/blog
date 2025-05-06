@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authorize, only: %i[ create ]
-  # before_action :authorize, only: %i[ show update ]
+  skip_before_action :authorized, only: [ :create, :index ]
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
   rescue_from ActiveRecord::RecordNotDestroyed, with: :render_not_destroyed
@@ -10,19 +9,24 @@ class UsersController < ApplicationController
     render json: users, status: :ok
   end
 
+  # def me
+  #   render json: current_user
+  # end
+
   def show
     user = find_user
     if user
       render json: user, status: :ok
     else
-      render json: { errors: { message: ['Not authorized'] } }, status: :not_authorized
+      render json: { errors: { message: ['Not authorized'] } }, status: :unauthorized
     end
   end
 
   def create
     user = User.create!(user_params)
     if user.valid?
-      render json: user, status: :created
+      token = encode_token(user_id: user.id)
+      render json: {user: UserSerializer.new(user), jwt: token}, status: :created
     else
       render json: {  errors: user.errord.full_messages }, status: :unprocessable_entity
     end
@@ -30,8 +34,12 @@ class UsersController < ApplicationController
 
   def update
     user = find_user
-    user.update!(user_params)
-    render json: user, status: :created
+    if user
+      user.update!(user_params)
+      render json: user, status: :created
+    else
+      render json: { errors: { message: ['Not authorized'] } }, status: :unauthorized
+    end
   end
 
   def destroy
@@ -48,7 +56,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :email, :password) #password confirmation
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 
   def render_not_found
