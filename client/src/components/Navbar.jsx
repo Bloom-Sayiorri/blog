@@ -3,7 +3,8 @@ import { useNavigate } from "react-router";
 import { NavLink } from "react-router-dom";
 // import logo from '../assets/blog.jpg';
 import { FaMoon } from "react-icons/fa";
-import { LuSunDim, LuAlignJustify } from "react-icons/lu";
+import { LuSunDim } from "react-icons/lu";
+import { RxAvatar } from "react-icons/rx";
 
 const Navbar = ({ isDark, handleDark }) => {
 	const navigate = useNavigate();
@@ -50,7 +51,7 @@ const Navbar = ({ isDark, handleDark }) => {
 						navigate("/profile");
 					}}
 				>
-					<LuAlignJustify role="button" className="text-xl" />
+					<RxAvatar role="button" className="text-xl" />
 				</button>
 			</section>
 		</header>

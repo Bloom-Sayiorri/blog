@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
-import Blogs from "./pages/Blogs";
+import Blog from "./pages/Blog";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 
@@ -29,7 +29,7 @@ function App() {
 				<Navbar isDark={isDark} handleDark={handleDark} />
 				<Routes>
 					<Route path="/" element={<Home />} />
-					<Route path="/blogs" element={<Blogs />} />
+					<Route path="/blog" element={<Blog />} />
 					<Route path="/profile" element={<Profile />} />
 					<Route path="/about" element={<About />} />
 					<Route path="/signup" element={<Signup />} />
