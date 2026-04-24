@@ -1,7 +1,6 @@
 class BlogsController < ApplicationController
-  before_action :authorize
   skip_before_action :authorize, only: [:index]
-  before_action :find_blog, only: %i[ show update destroy ]
+  before_action :find_blog, only: %i[show update destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
   rescue_from ActiveRecord::RecordNotDestroyed, with: :render_not_destroyed
   # resue_from ActiveRecord::RecordInvalid, with: :render_invalid
@@ -45,25 +44,26 @@ class BlogsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def find_blog
-      Blog.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def blog_params
-      params.require(:blog).permit(:title, :image_url, :rating, :category, :content, :user_id, :category_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def find_blog
+    Blog.find(params[:id])
+  end
 
-    # def render_invalid(e)
-    #   render json: { errors: e.record.full_messages }, status: :unprocessable_entity
-    # end
+  # Only allow a list of trusted parameters through.
+  def blog_params
+    params.require(:blog).permit(:title, :image_url, :rating, :category, :content, :user_id, :category_id)
+  end
 
-    def render_not_found
-      render json: { errors: ["Blog not found"] }, status: :not_found
-    end
+  # def render_invalid(e)
+  #   render json: { errors: e.record.full_messages }, status: :unprocessable_entity
+  # end
 
-    def render_not_destroyed
-      render json: { errors: ["Blog not deleted"] }, status: :unprocessable_entity
-    end
+  def render_not_found
+    render json: { errors: ['Blog not found'] }, status: :not_found
+  end
+
+  def render_not_destroyed
+    render json: { errors: ['Blog not deleted'] }, status: :unprocessable_entity
+  end
 end

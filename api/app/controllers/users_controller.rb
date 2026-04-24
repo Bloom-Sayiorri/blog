@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authorized, only: [ :create, :index ]
+  skip_before_action :authorized, only: %i[create index]
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
   rescue_from ActiveRecord::RecordNotDestroyed, with: :render_not_destroyed
@@ -9,9 +9,9 @@ class UsersController < ApplicationController
     render json: users, status: :ok
   end
 
-  # def me
-  #   render json: current_user
-  # end
+  def me
+    render json: current_user
+  end
 
   def show
     user = find_user
@@ -26,9 +26,9 @@ class UsersController < ApplicationController
     user = User.create!(user_params)
     if user.valid?
       token = encode_token(user_id: user.id)
-      render json: {user: UserSerializer.new(user), jwt: token}, status: :created
+      render json: { user: UserSerializer.new(user), jwt: token }, status: :created
     else
-      render json: {  errors: user.errord.full_messages }, status: :unprocessable_entity
+      render json: { errors: user.errord.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -43,10 +43,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if user
-      user.destroy!
-      head :no_content
-    end
+    return unless user
+
+    user.destroy!
+    head :no_content
   end
 
   private
@@ -60,15 +60,14 @@ class UsersController < ApplicationController
   end
 
   def render_not_found
-    render json: { errors: [message: "User not found!"] }, status: :not_found
+    render json: { errors: [message: 'User not found!'] }, status: :not_found
   end
 
-  def render_unprocessable_entity(e)
-    render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
+  def render_unprocessable_entity(err)
+    render json: { errors: err.record.errors.full_messages }, status: :unprocessable_entity
   end
 
-  def render_not_destroyed(e)
-    render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
+  def render_not_destroyed(err)
+    render json: { errors: err.record.errors.full_messages }, status: :unprocessable_entity
   end
-
 end

@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
+  resources :categories
   resources :reviews
   resources :blogs
   resources :users
 
+  get '/profile', to: 'users#show'
   get '/me', to: 'users#me'
-  # get '/profile', to: 'users#show'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 

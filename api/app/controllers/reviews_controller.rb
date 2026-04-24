@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :find_review, only: %i[ show update destroy ]
+  before_action :find_review, only: %i[show update destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
   # GET /reviews
@@ -39,17 +39,18 @@ class ReviewsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def find_review
-      review = Review.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def review_params
-      params.require(:review).permit(:comment, :user_id, :blog_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def find_review
+    Review.find(params[:id])
+  end
 
-    def render_not_found
-      render json: { errors: ["Review not found!"] }, status: :not_found
-    end
+  # Only allow a list of trusted parameters through.
+  def review_params
+    params.require(:review).permit(:comment, :user_id, :blog_id)
+  end
+
+  def render_not_found
+    render json: { errors: ['Review not found!'] }, status: :not_found
+  end
 end
