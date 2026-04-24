@@ -1,24 +1,31 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const Blog = () => {
-	const handleClick = () => {};
+const Blog = ({ blogs }) => {
+	const navigate = useNavigate();
+	const handleClick = () => {
+	};
 
 	return (
 		<div className="">
-			<img src="" alt="blog_image" height={50} width={50} className="" />
-			<section className="">
-				<span className="">{/*author*/}</span>
-				<h5 className="">{/*title*/}</h5>
-				<span className="">{/*category*/}</span>
-				<p className="">{/*content*/}</p>
-				<section>
+			{blogs.map((blog) => (
+				<div key={blog.id} onClick={handleClick}>
+					{/* {
+						blog.cover_image ?  */}
+					<img
+						src={blog.cover_image}
+						alt={blog.title}
+						height={150}
+						width={100}
+						className=""
+					/>
+					 {/* : ""
+					} */}
 					<section className="">
-						<span className="">{/*likes*/}</span>
-						<span className="">{/*comments*/}</span>
-						<span className="">{/*likes*/}</span>
+						<p>{blog.title}</p>
 					</section>
-				</section>
-			</section>
+				</div>
+			))}
 		</div>
 	);
 };

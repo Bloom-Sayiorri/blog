@@ -8,35 +8,37 @@ import Profile from "./pages/Profile";
 import Blog from "./pages/Blog";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import BlogForm from "./pages/BlogForm";
 
 function App() {
 	// THEMES
 	const [isDark, setIsDark] = useState(false);
 
 	const handleDark = () => {
-		setIsDark(!isDark);
+		setIsDark(prevState => !prevState);
 	};
 
 	// use useEffect to autologin the user and setUser(user) by fetching /me route
 
 	return (
 		<BrowserRouter>
-			<div
-				className={`h-screen overflow-hidden ${
-					isDark ? "bg-bg text-white" : "bg-white"
+			<main
+				className={`h-screen ${
+					isDark ? "dark" : ""
 				}`}
 			>
 				<Navbar isDark={isDark} handleDark={handleDark} />
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/blog" element={<Blog />} />
+					<Route path="/form" element={<BlogForm />} />
 					<Route path="/profile" element={<Profile />} />
 					<Route path="/about" element={<About />} />
 					<Route path="/signup" element={<Signup />} />
 					<Route path="/login" element={<Login />} />
 				</Routes>
 				<Footer />
-			</div>
+			</main>
 		</BrowserRouter>
 	);
 }

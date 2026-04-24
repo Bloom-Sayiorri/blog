@@ -4,13 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-    html {
-        height: 100vh;
-    }
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
 
+@layer base {
     body {
         font-family: 'Poppins', sans-serif;
+        @apply text-[#171717] bg-[#ffffff];
     }
 }
 
@@ -19,3 +21,16 @@
         @apply text-red-600;
    }
 }
+
+@layer utilities {
+    .dark {
+        @apply text-[#ededed] bg-[#0a0a0a]
+    }
+}
+
+/* @media (prefers-color-schem: dark) {
+   :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  } 
+} */

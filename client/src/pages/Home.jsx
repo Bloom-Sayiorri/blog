@@ -7,7 +7,7 @@ const Home = () => {
 		<div className="">
 			<section className="">
 				<h4 className="">Latest Articles</h4>
-				<select></select>
+				{/* <select></select> */}
 				<Search />
 			</section>
 			<BlogsList />

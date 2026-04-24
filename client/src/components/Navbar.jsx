@@ -12,12 +12,14 @@ const Navbar = ({ isDark, handleDark }) => {
 	return (
 		<header className="flex justify-between items-center py-2 px-4">
 			{/* <img src={logo} alt='Logo' height={40} width={40} className='bg-transparent' /> */}
+			<NavLink to="/" className="">
+				<h1 className="font-semibold bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500/40 text-transparent bg-clip-text text-xl z-3">
+					Blogz
+				</h1>
+			</NavLink>
 			<nav className="flex items-center gap-5">
-				<NavLink to="/" className="" activeClassName="active">
+				<NavLink to="/" className="">
 					Home
-				</NavLink>
-				<NavLink to="/categories" className="">
-					Categories
 				</NavLink>
 				<NavLink to="/favorites" className="">
 					Favorites
@@ -26,13 +28,6 @@ const Navbar = ({ isDark, handleDark }) => {
 					About
 				</NavLink>
 			</nav>
-
-			<NavLink to="/" className="">
-				<h1 className="font-semibold bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500/40 text-transparent bg-clip-text text-xl z-3">
-					Blogz
-				</h1>
-			</NavLink>
-
 			<section className="flex items-center justify-center gap-2">
 				<button type="button" onClick={handleDark}>
 					{isDark ? (
@@ -41,7 +36,7 @@ const Navbar = ({ isDark, handleDark }) => {
 							className={`text-2xl ${isDark ? "text-white" : ""}`}
 						/>
 					) : (
-						<FaMoon className={`${isDark ? "" : "text-black"}`} />
+						<FaMoon className={`text-xl ${isDark ? "" : "text-black"}`} />
 					)}
 				</button>
 				{/*<NavLink to='/profile' className=''>Profile</NavLink> */}
@@ -49,9 +44,8 @@ const Navbar = ({ isDark, handleDark }) => {
 					type="button"
 					onClick={() => {
 						navigate("/profile");
-					}}
-				>
-					<RxAvatar role="button" className="text-xl" />
+					}}>
+					<RxAvatar role="button" className="text-2xl" />
 				</button>
 			</section>
 		</header>
